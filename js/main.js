@@ -52,26 +52,26 @@ const app = {
         {
             name: 'ĐỪNG LÀM TRÁI TIM ANH ĐAU',
             singer: 'Sơn Tùng MTP',
-            path: './music/dunglamtraitimanhdau_sontungmtp.mp3',
-            image: './img/sontung_mtp.png'
+            path: '../music/dunglamtraitimanhdau_sontungmtp.mp3',
+            image: '../img/sontung_mtp.png'
         },
         {
             name: 'BADBYE',
             singer: 'Wean',
-            path: './music/badbye_wean.mp3',
-            image: './img/badbye.png'
+            path: '../music/badbye_wean.mp3',
+            image: '../img/badbye.png'
         },
         {
             name: 'ĐOẠN KẾT MỚI',
             singer: 'Sơn Tùng MTP',
-            path: './music/doanketmoi_hoangdung.mp3',
-            image: './img/doanketmoi.png'
+            path: '../music/doanketmoi_hoangdung.mp3',
+            image: '../img/doanketmoi.png'
         },
         {
             name: 'NGÀY ĐẸP TRỜI ĐỂ NÓI CHIA TAY',
             singer: 'Lou Hoàng',
-            path: './music/ngaydeptroidenoichiatay_louhoang.mp3',
-            image: './img/louhoang.jpg'
+            path: '../music/ngaydeptroidenoichiatay_louhoang.mp3',
+            image: '../img/louhoang.jpg'
         }, 
     ],
     //

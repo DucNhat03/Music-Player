@@ -98,7 +98,7 @@ html, body {
   border-radius: 50%;
   background-position: center;
   background-size: cover;
-  background-image: url(../img/sontung_mtp.png);
+  background-image: url(./img/sontung_mtp.png);
 }
 
 .dashboard .control {

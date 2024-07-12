@@ -58,17 +58,22 @@ html, body {
   text-align: center; 
 }
 
-.dashboard header div{
+.dashboard header div {
   position: absolute;
   top: 0;
   right: 0;
   margin: 20px;
-  padding: 12px;
-  font-size: 14px;
-  background-color: #523b71;
-  color: rgb(255, 255, 255);
+  padding: 10px;
+  font-size: 24px;
+  color: rgb(206, 127, 206);
   border-radius: 100%;
   cursor: pointer;
+}
+
+
+.dashboard header div :hover{
+  color: #b16060;
+  
 }
 
 .dashboard header h4 {

@@ -33,6 +33,10 @@ const playIcon = $('.fa-play');
 const pauseIcon = $('.fa-circle-pause');
 const progress = $('#progress');
 const playlist = $('.playlist')
+const modal = document.getElementById('settingsModal');
+const btnChange = document.getElementById('btnChange')
+const btnClose = document.getElementById('btnClose')
+
 // 
 window.onload = function() {
     var dashboard = document.querySelector('.dashboard');
@@ -128,6 +132,35 @@ const app = {
            cd.style.height = newCdWidth > 0 ? newCdWidth + 'px':0
            cd.style.opacity = newCdWidth/cdWidth
         }
+
+        // volume
+        const audio = document.getElementById('audio');
+        const volumeControl = document.getElementById('volume');
+
+        // Thiết lập sự kiện thay đổi âm lượng
+        volumeControl.addEventListener('input', function() {
+        audio.volume = volumeControl.value / 100;
+        });
+
+        // Mặc định âm lượng
+        audio.volume = volumeControl.value / 100;
+
+        // Đóng modal
+        btnClose.onclick = function(){
+            modal.style.display = 'none';
+        }
+
+        // Change
+        btnChange.onclick = function(){
+            modal.style.display = 'block';
+        }
+
+        // Đóng modal khi click vào vùng ngoài modal
+        window.addEventListener('click', function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        });
 
         // Giao diện sáng, tối
         settingBtn.onclick = function(){

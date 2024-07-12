@@ -65,9 +65,51 @@ html, body {
   margin: 20px;
   padding: 10px;
   font-size: 24px;
-  color: rgb(206, 127, 206);
+  color: rgb(43, 33, 131);
   border-radius: 100%;
   cursor: pointer;
+}
+
+
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  top: 80px;
+  right: 10px;
+  width: 15%; 
+  height: 100%; 
+  /* background-color: rgba(0, 0, 0, 0.5); */
+}
+
+.modal-content {
+  background-color: #f2ecf3; 
+  right: 0; 
+  top: 0;
+  padding: 20px;
+  border-radius: 20px;
+  height: 100px;
+}
+
+.modal-content .btn {
+  margin-bottom: 25px; 
+}
+
+.modal-content .btn i {
+  margin-right: 10px; 
+}
+
+.modal-content .btn input {
+  vertical-align: middle; 
+  margin-left: 5px; 
+}
+
+.modal-content .btn.btn-close {
+  text-align: center; 
+}
+
+.modal-content .btn.btn-close i {
+  cursor: pointer; 
 }
 
 

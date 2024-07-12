@@ -17,8 +17,8 @@
         <!-- Dashboard -->
         <div class="dashboard">
           <header>
-            <div class="btn btn-setting" id="btnSetting">
-              <i class="fa-regular fa-lightbulb"></i>
+            <div class="btn btn-btnChange" id="btnChange">
+              <i class="fa-solid fa-cog"></i>
             </div>
             <h4>Now playing:</h4>
             <h2>Music Name</h2>
@@ -60,6 +60,19 @@
         <!-- Playlist -->
         <div class="playlist">
           <!-- Add song items here -->
+        </div>
+      </div>
+      <div id="settingsModal" class="modal">
+        <div class="modal-content">
+          <div class="btn btn-setting" id="btnSetting">
+            <i class="fa-regular fa-lightbulb"></i>
+          </div>
+          <div class="btn btn-volume">
+            <i class="fa-solid fa-volume-up"></i>
+            <input type="range" id="volume" class="volume" value="100" step="1" min="0" max="100">
+          </div>
+          <div class="btn btn-close" id="btnClose">
+            <i class="fa-solid fa-times"></i>
         </div>
       </div>
   </body>

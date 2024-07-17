@@ -18,6 +18,11 @@ html, body {
   color: rgb(247, 4, 0) !important;
 }
 
+.active2 {
+  color: rgb(255, 255, 255) !important;
+  background-color: #8d6abb !important;
+}
+
 
 .player {
   display: flex;
@@ -84,16 +89,25 @@ html, body {
 
 .modal-content {
   background-color: #f2ecf3; 
-  right: 0; 
+  right: 20px; 
   top: 0;
   padding: 20px;
   border-radius: 20px;
   height: 100px;
+  width: 90%;
+  max-width: 180px;
+  position: relative;
 }
 
 .modal-content .btn {
   margin-bottom: 25px; 
+  cursor: pointer; 
 }
+
+.modal-content .btn :hover {
+  color: #ec6666;
+}
+
 
 .modal-content .btn i {
   margin-right: 10px; 
@@ -102,6 +116,7 @@ html, body {
 .modal-content .btn input {
   vertical-align: middle; 
   margin-left: 5px; 
+  cursor: pointer; 
 }
 
 .modal-content .btn.btn-close {
@@ -258,4 +273,30 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* button remix, normal */
+.genre-buttons {
+  margin-top: 10px;
+}
+
+.genre-buttons button {
+  margin: 10px;
+  padding: 5px 5px;
+  width: 80px;
+  position: sticky;
+  height: 35px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  background-color: #578d78;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0px 0px 20px rgba(161, 148, 148, 0.5);
+
+}
+
+.genre-buttons button:hover {
+  background-color: #0056b3;
 }

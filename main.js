@@ -1,19 +1,4 @@
 
-/*
-<------------ Cac cong viec can lam ------------>
-1. Render sessions
-2. Scroll top
-3. Play / pause / seek
-4. CD rotate
-5. Next / prev
-6. Random
-7. Next / Repeat when ended
-8. Active song
-9. Scroll active song into view
-10. Play song when click
-*/
-
-//
 const PLAYER_STORAGE_KEY = 'DUCNHAT'
 const $ = document.querySelector.bind(document)
 const $$= document.querySelectorAll.bind(document)
@@ -37,6 +22,9 @@ const modal = document.getElementById('settingsModal');
 const btnChange = document.getElementById('btnChange')
 const btnClose = document.getElementById('btnClose')
 
+const btnRemix = document.getElementById("btnRemix");
+const btnNormal = document.getElementById("btnNormal");
+
 // 
 window.onload = function() {
     var dashboard = document.querySelector('.dashboard');
@@ -52,7 +40,41 @@ const app = {
     isRepeat: false,
     shuffleArr:[],
     config: JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY)) || {},
-    songs: [
+    // songs: [
+    //     {
+    //         name: 'ĐỪNG LÀM TRÁI TIM ANH ĐAU',
+    //         singer: 'Sơn Tùng MTP',
+    //         path: './music/dunglamtraitimanhdau_sontungmtp.mp3',
+    //         image: './img/sontung_mtp.png'
+    //     },
+    //     {
+    //         name: 'BADBYE',
+    //         singer: 'Wean',
+    //         path: './music/badbye_wean.mp3',
+    //         image: './img/badbye.png'
+    //     },
+    //     {
+    //         name: 'ĐOẠN KẾT MỚI',
+    //         singer: 'Sơn Tùng MTP',
+    //         path: './music/doanketmoi_hoangdung.mp3',
+    //         image: './img/doanketmoi.png'
+    //     },
+    //     {
+    //         name: 'NGÀY ĐẸP TRỜI ĐỂ NÓI CHIA TAY',
+    //         singer: 'Lou Hoàng',
+    //         path: './music/ngaydeptroidenoichiatay_louhoang.mp3',
+    //         image: './img/louhoang.jpg'
+    //     }, 
+    // ],
+    remixSongs: [
+        { name: 'KHI YÊU NÀO ĐÂU AI MUỐN', singer: 'Trịnh Thiên Ân', path: './music/KhiYeuNaoDauAiMuon.mp3', image: './img/KYNDAM.jpg' },
+        { name: 'CÁNH ĐỒNG YÊU THƯƠNG', singer: 'Trung Quân', path: './music/CanhDongYeuThuong.mp3', image: './img/CDYT.jpg' },
+        { name: 'MƯA THÁNG 6', singer: 'Văn Mai Hương', path: './music/MuaThang6.mp3', image: './img/muathang6.jpg' },
+        { name: 'THƯƠNG THẦM', singer: 'HOÀI BẢO', path: './music/ThuongTham.mp3', image: './img/thuongtham.jpg' },
+        { name: 'VÙA HẬN VỪA YÊU', singer: 'Trung Tự', path: './music/VuaHanVuaYeu.mp3', image: './img/VHVY.jpg' },
+
+    ],
+    normalSongs: [
         {
             name: 'ĐỪNG LÀM TRÁI TIM ANH ĐAU',
             singer: 'Sơn Tùng MTP',
@@ -77,7 +99,14 @@ const app = {
             path: './music/ngaydeptroidenoichiatay_louhoang.mp3',
             image: './img/louhoang.jpg'
         }, 
+        {
+            name: 'ANH THÔI NHÂN NHƯỢNG',
+            singer: 'Kiều Chi',
+            path: './music/AnhThoiNhanNhuong.mp3',
+            image: './img/ATNN.jpg'
+        }, 
     ],
+    currentSongs: [],
     //
     setConfig: function(key,value){
         this.config[key] =  value
@@ -85,8 +114,7 @@ const app = {
     },
     //
     render: function() {
-        
-        const htmls = this.songs.map((song,index) =>{
+        const htmls = this.currentSongs.map((song,index) =>{
             return `<div class="song song-${index} ${index === this.currentIndex ? 'active-song':''}" data-index = ${index}>
                 <div class="thumb" 
                     style="background-image: url('${song.image}');">
@@ -105,7 +133,7 @@ const app = {
     defineProperties: function(){
         Object.defineProperty(this,'currentSong',{
             get: function(){
-                return this.songs[this.currentIndex]
+                return this.currentSongs[this.currentIndex]
             }
         })
     },
@@ -292,6 +320,29 @@ const app = {
                 }
             }
         }
+
+        //Xử lý khi chọn Remix
+        btnRemix.addEventListener("click", function() {
+            _this.currentSongs = _this.remixSongs;
+            _this.render();
+            _this.loadCurrentSong();
+            // khi click vao button in dam
+            btnRemix.classList.add('active2');
+            btnNormal.classList.remove('active2');
+        });
+
+        btnNormal.classList.add('active2');
+        //Xử lý khi chọn Normal
+        btnNormal.addEventListener("click", function() {
+            // mac dinh button normal duoc in dam
+            _this.currentSongs = _this.normalSongs;
+            _this.render();
+            _this.loadCurrentSong();
+            // khi click vao button in dam
+            btnNormal.classList.add('active2');
+            btnRemix.classList.remove('active2');
+        });
+
     },
     loadCurrentSong: function(){
         heading.textContent = this.currentSong.name
@@ -307,7 +358,7 @@ const app = {
 
     nextSong: function(){
         this.currentIndex++
-        if(this.currentIndex >= this.songs.length){
+        if(this.currentIndex >= this.currentSongs.length){
             this.currentIndex = 0
         }
         this.loadCurrentSong()
@@ -317,7 +368,7 @@ const app = {
     prevSong: function(){
         this.currentIndex--
         if(this.currentIndex <0 ){
-            this.currentIndex = this.songs.length -1
+            this.currentIndex = this.currentSongs.length -1
         }
         this.loadCurrentSong()
         this.handleSongActive( this.currentIndex)
@@ -325,9 +376,9 @@ const app = {
     playRandomSong:function(){
         let newIndex 
         do {
-            newIndex = Math.floor(Math.random()* this.songs.length)
+            newIndex = Math.floor(Math.random()* this.currentSongs.length)
         }while( this.currentIndex === newIndex || this.shuffleArr.includes(newIndex))
-        if(this.shuffleArr.length == this.songs.length - 1){
+        if(this.shuffleArr.length == this.currentSongs.length - 1){
             this.shuffleArr = []
         }
         this.shuffleArr.push(newIndex)
@@ -358,6 +409,7 @@ const app = {
         //lắng nghe sử lý các sự kiện (Dom Events)
         this.handleEvents()
         //tải thông tin bài hát đầu tiên vào UI khi chạy ứng dụng lần đầu
+        this.currentSongs = this.normalSongs;
         this.loadCurrentSong()
         //Render playlist
         this.render()

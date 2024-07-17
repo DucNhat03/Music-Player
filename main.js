@@ -71,7 +71,7 @@ const app = {
         { name: 'CÁNH ĐỒNG YÊU THƯƠNG', singer: 'Trung Quân', path: './music/CanhDongYeuThuong.mp3', image: './img/CDYT.jpg' },
         { name: 'MƯA THÁNG 6', singer: 'Văn Mai Hương', path: './music/MuaThang6.mp3', image: './img/muathang6.jpg' },
         { name: 'THƯƠNG THẦM', singer: 'HOÀI BẢO', path: './music/ThuongTham.mp3', image: './img/thuongtham.jpg' },
-        { name: 'VÙA HẬN VỪA YÊU', singer: 'Trung Tự', path: './music/VuaHanVuaYeu.mp3', image: './img/VHVY.jpg' },
+       
 
     ],
     normalSongs: [
@@ -104,7 +104,8 @@ const app = {
             singer: 'Kiều Chi',
             path: './music/AnhThoiNhanNhuong.mp3',
             image: './img/ATNN.jpg'
-        }, 
+        },  
+        { name: 'VÙA HẬN VỪA YÊU', singer: 'Trung Tự', path: './music/VuaHanVuaYeu.mp3', image: './img/VHVY.jpg' },
     ],
     currentSongs: [],
     //
